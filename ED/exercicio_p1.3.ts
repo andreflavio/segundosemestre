@@ -26,7 +26,6 @@ else {
 
 
 /*
-Claro, aqui estão as explicações sem os códigos:
 
 1. Inicialmente, solicitamos ao usuário que insira dois números. Esses números são armazenados 
 como strings.

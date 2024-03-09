@@ -1,3 +1,4 @@
+
 let palavra1 = prompt("Digite a primeira palavra: ");
 let palavra2 = prompt("Digite a segunda palavra: ");
 
@@ -8,8 +9,6 @@ if (palavra1.charCodeAt(0) < palavra2.charCodeAt(0)) {
 } else {
     console.log('As duas palavras têm a mesma primeira letra.');
 }
-
-
 
 
 
