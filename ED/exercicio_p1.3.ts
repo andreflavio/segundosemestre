@@ -8,9 +8,11 @@ num2 = Number(num2);
 
 // A estrutura 'if' verifica se num1 é maior que num2
 if (num1 > num2) {
+
   // Se a condição for verdadeira, imprime que num1 é o maior número
   console.log(`O maior número é ${num1}`);
 } 
+
 // A estrutura 'else if' verifica se num2 é maior que num1
 else if (num2 > num1) {
   // Se a condição for verdadeira, imprime que num2 é o maior número
