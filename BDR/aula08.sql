@@ -36,17 +36,20 @@ SELECT nome
 FROM tbl_peca
 WHERE cod_peca NOT IN (SELECT cod_peca FROM tbl_estoque);
 
+
 -- 4 Encontre o nome das peças que estão em estoque com uma quantidade maior que 20:
-SELECT p.nome
+SELECT DISTINCT p.nome
 FROM tbl_peca p
 INNER JOIN tbl_estoque e ON p.cod_peca = e.cod_peca
 WHERE e.quantidade > 20;
 
+
 -- 5 Listar todas as peças exceto a PLACA, ordenado por nome:
-SELECT nome
+SELECT cod_peca, nome, cor, preco, cidade
 FROM tbl_peca
 WHERE nome <> 'PLACA'
 ORDER BY nome;
+
 
 -- 6 Listar o nome e a cor das peças do fornecedor C, ordenado pelo nome da peça:
 SELECT p.nome, p.cor
@@ -62,13 +65,21 @@ FROM tbl_peca p
 WHERE p.cidade = 'LONDRES';
 
 -- 8 Encontre o nome das peças que estão disponíveis em estoque em Londres e não estão disponíveis em estoque em Paris:
-SELECT nome
-FROM tbl_peca
-WHERE cidade = 'LONDRES'
-AND cod_peca IN (SELECT cod_peca FROM tbl_estoque)
-AND cod_peca NOT IN (SELECT cod_peca FROM tbl_estoque WHERE cod_fornecedor IN (SELECT cod_fornecedor FROM tbl_fornecedor WHERE cidade = 'PARIS'));
+
+SELECT DISTINCT p.nome
+FROM tbl_peca p
+INNER JOIN tbl_estoque e ON p.cod_peca = e.cod_peca
+WHERE p.cidade = 'LONDRES'
+AND p.cod_peca NOT IN (
+    SELECT p2.cod_peca 
+    FROM tbl_peca p2
+    INNER JOIN tbl_estoque e2 ON p2.cod_peca = e2.cod_peca
+    WHERE p2.cidade = 'PARIS'
+);
 
 -- 9 Quais os códigos das peças que possuem maior estoque do que a peça de código 2?
-SELECT cod_peca
+SELECT DISTINCT cod_peca
 FROM tbl_estoque
-WHERE quantidade > (SELECT quantidade FROM tbl_estoque WHERE cod_peca = 2);
+WHERE quantidade > (SELECT quantidade FROM tbl_estoque WHERE cod_peca = 2)
+ORDER BY cod_peca;
+
