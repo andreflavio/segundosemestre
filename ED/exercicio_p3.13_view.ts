@@ -1,5 +1,4 @@
-import Table = require("cli-table");
-
+import Table from 'cli-table';
 import { bubbleSort, optimizedBubbleSort, generateReversedArray, measureSortingTime } from './exercicio_p3.13_model';
 
 // Tamanhos dos vetores
